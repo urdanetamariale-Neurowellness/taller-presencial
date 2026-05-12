@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfectamente Imperfecta · Taller Presencial · NeuroWellness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --azul:      #14233A;
+  --blush:     #E9C8C8;
+  --oro:       #D6C79A;
+  --coral:     #D99A8F;
+  --marfil:    #F7F4F1;
+  --gris-n:    #E6E2DE;
+  --grafito:   #2B2E33;
+  --gris-t:    #4A4D53;
+  --malva:     #9B6D80;
+  --salvia:    #9DB2A2;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;font-weight:300;background:var(--marfil);color:var(--gris-t);line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif;color:var(--azul);line-height:1.2;}
+h1{font-weight:700;}h2{font-weight:600;}h3{font-weight:600;}
+strong{font-weight:600;color:var(--grafito);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(247,244,241,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--gris-n);padding:.9rem 2.5rem;display:flex;justify-content:space-between;align-items:center;}
+.nav-logo{height:36px;width:auto;display:block;}
+.nav-logo-text{font-size:.85rem;font-weight:700;color:var(--azul);letter-spacing:.08em;display:none;}
+.nav-cta{background:var(--azul);color:var(--marfil);border:none;padding:.6rem 1.5rem;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;border-radius:6px;transition:background .2s;}
+.nav-cta:hover{background:var(--malva);}
+
+/* LAYOUT */
+section{padding:5.5rem 2rem;}
+.container{max-width:1100px;margin:0 auto;}
+.narrow{max-width:740px;margin:0 auto;}
+.tag{display:inline-block;font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--malva);margin-bottom:1rem;}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:1.8rem;color:var(--azul);}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(145deg,var(--blush) 0%,var(--marfil) 55%,#EDE5DF 100%);padding:9rem 2rem 6rem;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 15% 60%,rgba(155,109,128,.1) 0%,transparent 55%),radial-gradient(ellipse at 85% 25%,rgba(20,35,58,.05) 0%,transparent 50%);pointer-events:none;}
+.hero-badge{background:white;border:1px solid var(--gris-n);border-radius:50px;padding:.45rem 1.3rem;font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--malva);margin-bottom:2.5rem;box-shadow:0 2px 12px rgba(155,109,128,.12);}
+.hero h1{font-size:clamp(3rem,7.5vw,6.5rem);line-height:.95;color:var(--azul);margin-bottom:.2rem;}
+.hero h1 span{display:block;font-weight:300;font-style:italic;color:var(--malva);font-size:.9em;}
+.hero-sub{font-size:clamp(.95rem,1.8vw,1.1rem);font-weight:300;color:var(--gris-t);max-width:500px;margin:2rem auto 0;line-height:1.7;}
+.hero-q{font-size:clamp(1.1rem,2.2vw,1.4rem);font-weight:500;color:var(--azul);max-width:620px;margin:3.5rem auto 0;padding-top:2.5rem;border-top:1px solid var(--gris-n);line-height:1.5;}
+
+/* DOS COLUMNAS */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:center;margin-top:3rem;}
+.col-img{border-radius:12px;overflow:hidden;}
+.col-img img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;}
+
+/* SÍNTOMAS */
+.sintomas{background:white;}
+.sint-block{margin-bottom:1.8rem;}
+.sint-block h3{font-size:1rem;font-weight:600;margin-bottom:.5rem;color:var(--azul);}
+.sint-block p{font-size:.9rem;color:var(--gris-t);line-height:1.75;}
+.preguntas{border-top:1px solid var(--gris-n);padding-top:1.5rem;margin-top:1.5rem;}
+.preguntas p{font-size:.95rem;font-weight:500;font-style:italic;color:var(--malva);margin-bottom:.7rem;line-height:1.5;}
+
+/* EXPERIENCIA */
+.experiencia{background:var(--marfil);}
+.exp-intro{font-size:clamp(1.2rem,2.2vw,1.6rem);font-weight:600;color:var(--azul);line-height:1.4;margin-bottom:1.5rem;}
+.experiencia p{color:var(--gris-t);margin-bottom:1rem;font-size:.95rem;max-width:660px;}
+.highlight{background:var(--blush);border-left:3px solid var(--malva);border-radius:0 8px 8px 0;padding:1.2rem 1.6rem;margin:2rem 0;font-size:.95rem;font-weight:500;color:var(--azul);line-height:1.6;}
+
+/* LISTAS */
+.items-list{list-style:none;margin:2rem 0;}
+.items-list li{padding:.9rem 0 .9rem 1.8rem;border-bottom:1px solid var(--gris-n);position:relative;font-size:.92rem;color:var(--gris-t);line-height:1.65;}
+.items-list li::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:var(--coral);}
+.banner-img{width:100%;height:300px;object-fit:cover;border-radius:12px;margin-top:3rem;display:block;}
+
+/* BONUS */
+.bonus{background:var(--azul);}
+.bonus .tag{color:var(--blush);}
+.bonus .section-title{color:white;}
+.bonus-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem;}
+.bonus-card{background:rgba(255,255,255,.06);border:1px solid rgba(233,200,200,.2);border-radius:12px;padding:2rem;}
+.bonus-card h4{font-size:1rem;font-weight:600;color:var(--blush);margin-bottom:.8rem;}
+.bonus-card p{color:rgba(247,244,241,.65);font-size:.88rem;line-height:1.7;}
+
+/* FUNDAMENTOS */
+.fundamentos{background:white;}
+.fund-item{display:grid;grid-template-columns:260px 1fr;gap:3.5rem;align-items:center;margin-bottom:4rem;padding-bottom:4rem;border-bottom:1px solid var(--gris-n);}
+.fund-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.fund-item.rev{direction:rtl;}
+.fund-item.rev>*{direction:ltr;}
+.fund-img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;display:block;}
+.fund-num{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:.5rem;}
+.fund-content h3{font-size:1.2rem;margin-bottom:1rem;}
+.fund-content p{font-size:.9rem;color:var(--gris-t);margin-bottom:.8rem;line-height:1.75;}
+.fund-quote{display:block;font-style:italic;font-weight:400;color:var(--malva);font-size:.9rem;border-left:2px solid var(--blush);padding-left:1rem;margin-top:1rem;line-height:1.6;}
+
+/* PARA QUIÉN */
+.para-quien{background:var(--marfil);}
+.pq-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem;}
+.pq-card{background:white;border-radius:12px;padding:2.5rem;border:1px solid var(--gris-n);}
+.pq-card h3{font-size:1rem;font-weight:600;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--gris-n);}
+.pq-list{list-style:none;}
+.pq-list li{padding:.55rem 0 .55rem 1.3rem;font-size:.88rem;color:var(--gris-t);position:relative;line-height:1.6;}
+.pq-list li::before{content:'—';position:absolute;left:0;color:var(--salvia);font-weight:600;}
+
+/* FACILITADORA */
+.facilitadora{background:white;}
+.fac-name{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;margin-bottom:.3rem;}
+.fac-role{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);margin-bottom:2rem;}
+.fac-bio{font-size:.92rem;color:var(--gris-t);margin-bottom:.9rem;line-height:1.75;}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem;}
+.etiqueta{background:var(--marfil);border:1px solid var(--gris-n);border-radius:50px;padding:.3rem .9rem;font-size:.7rem;font-weight:500;letter-spacing:.06em;color:var(--azul);text-transform:uppercase;}
+
+/* PRÓXIMA */
+.proxima{background:var(--azul);text-align:center;}
+.proxima .tag{color:var(--blush);}
+.proxima .section-title{color:white;font-size:clamp(2.2rem,5vw,4.5rem);}
+.proxima .section-title span{color:var(--blush);font-weight:300;font-style:italic;}
+.edicion-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(233,200,200,.2);border-radius:12px;overflow:hidden;margin:3rem 0;}
+.detalle{padding:2rem 1.5rem;border-right:1px solid rgba(233,200,200,.15);}
+.detalle:last-child{border-right:none;}
+.det-label{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);display:block;margin-bottom:.5rem;}
+.det-val{font-size:1.1rem;font-weight:500;color:white;}
+.precio-wrap{margin:2rem auto;}
+.precio-old{font-size:1.4rem;font-weight:300;color:rgba(247,244,241,.35);text-decoration:line-through;display:block;}
+.precio-new{font-size:4rem;font-weight:700;color:white;line-height:1;}
+.precio-nota{font-size:.8rem;font-weight:500;color:var(--oro);margin-top:.5rem;display:block;}
+.plazas-txt{font-size:.8rem;color:rgba(247,244,241,.4);margin:1rem 0 2.5rem;line-height:1.7;}
+
+/* FORMULARIO */
+.form-section{background:var(--marfil);}
+.form-wrap{max-width:580px;margin:0 auto;}
+.form-intro{text-align:center;font-size:.9rem;color:var(--gris-t);margin-bottom:2.5rem;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.fg{display:flex;flex-direction:column;gap:.4rem;}
+.fg.full{grid-column:1/-1;}
+label{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--azul);}
+input,select,textarea{background:white;border:1px solid var(--gris-n);border-radius:8px;padding:.75rem 1rem;font-family:'Montserrat',sans-serif;font-size:.88rem;font-weight:300;color:var(--grafito);outline:none;transition:border-color .2s,box-shadow .2s;width:100%;-webkit-appearance:none;}
+input:focus,select:focus,textarea:focus{border-color:var(--malva);box-shadow:0 0 0 3px rgba(155,109,128,.1);}
+textarea{resize:vertical;min-height:100px;}
+.btn-submit{background:var(--azul);color:white;border:none;border-radius:8px;padding:1rem 2rem;font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;width:100%;margin-top:1rem;transition:background .2s;}
+.btn-submit:hover{background:var(--malva);}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed;}
+.form-legal{font-size:.72rem;color:var(--gris-t);text-align:center;margin-top:1rem;line-height:1.6;opacity:.7;}
+.form-ok{display:none;text-align:center;padding:3.5rem 2rem;background:white;border-radius:12px;border:1px solid var(--gris-n);}
+.form-ok h3{font-size:1.6rem;margin-bottom:1rem;color:var(--azul);}
+.form-ok p{color:var(--gris-t);font-size:.9rem;}
+
+/* FAQ */
+.faq{background:white;}
+.faq-item{border-bottom:1px solid var(--gris-n);}
+.faq-btn{width:100%;background:none;border:none;padding:1.4rem 0;text-align:left;font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:500;color:var(--azul);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+.faq-ico{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--marfil);border:1px solid var(--gris-n);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--malva);transition:transform .3s,background .2s;}
+.faq-item.open .faq-ico{transform:rotate(45deg);background:var(--blush);}
+.faq-ans{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s;}
+.faq-item.open .faq-ans{max-height:300px;padding-bottom:1.5rem;}
+.faq-ans p{font-size:.9rem;color:var(--gris-t);line-height:1.75;}
+
+/* CONTACTO */
+.contacto{background:var(--blush);text-align:center;}
+.contacto .section-title{color:var(--azul);}
+.contacto p{color:var(--grafito);font-size:.92rem;margin:.8rem 0 2rem;}
+.c-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
+.c-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 2rem;border-radius:8px;font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.06em;text-decoration:none;transition:all .2s;}
+.c-btn.p{background:var(--azul);color:white;}
+.c-btn.p:hover{background:var(--malva);}
+.c-btn.s{background:white;color:var(--azul);border:1px solid var(--gris-n);}
+.c-btn.s:hover{background:var(--marfil);}
+
+/* FOOTER */
+footer{background:var(--grafito);color:rgba(247,244,241,.45);text-align:center;padding:2.5rem 2rem;font-size:.75rem;line-height:1.8;}
+footer a{color:rgba(247,244,241,.45);text-decoration:none;}
+footer a:hover{color:var(--blush);}
+.footer-brand{font-size:.85rem;font-weight:600;color:rgba(247,244,241,.7);margin-bottom:.5rem;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:820px){
+  nav{padding:.9rem 1.2rem;}
+  .two-col,.fund-item,.pq-grid,.bonus-grid{grid-template-columns:1fr;gap:2rem;}
+  .fund-item.rev{direction:ltr;}
+  .edicion-grid{grid-template-columns:1fr 1fr;}
+  .detalle{border-bottom:1px solid rgba(233,200,200,.15);}
+  .form-grid{grid-template-columns:1fr;}
+  .c-btns{flex-direction:column;align-items:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#">
+    <img class="nav-logo"
+      src="https://urdanetamariale-neurowellness.github.io/taller-presencial/logo.png"
+      alt="NeuroWellness Learning"
+      onerror="this.style.display='none';document.querySelector('.nav-logo-text').style.display='block';"
+    />
+    <span class="nav-logo-text">NeuroWellness</span>
+  </a>
+  <a href="#reservar" class="nav-cta">Reservar plaza</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Taller experiencial presencial · 4 horas</div>
+  <h1>Perfectamente<span>Imperfecta.</span></h1>
+  <p class="hero-sub">Cómo pasar de la autoexigencia que paraliza<br>a la presencia que transforma.</p>
+  <p class="hero-q">¿Cuántas partes de tu vida están en pausa<br>esperando una versión "mejor" de ti?</p>
+</section>
+
+<!-- SÍNTOMAS -->
+<section class="sintomas reveal">
+  <div class="container">
+    <div class="two-col">
+      <div class="col-img">
+        <img src="https://urdanetamariale-neurowellness.github.io/taller-presencial/sobrepensar.png" alt="Sobrepensar" loading="lazy"/>
+      </div>
+      <div>
+        <span class="tag">El ciclo que reconoces</span>
+        <div class="sint-block">
+          <h3>Procrastinas lo que más te importa.</h3>
+          <p>Está en tu lista desde hace días, semanas o incluso meses. Lo piensas, lo planeas, pero no lo empiezas. Al final del día llega esa sensación familiar: "otra vez no lo hice". Y la culpa se vuelve más pesada que el propio cansancio.</p>
+        </div>
+        <div class="sint-block">
+          <h3>El ideal de perfección te agota antes de empezar.</h3>
+          <p>Si no puedes hacerlo perfecto, mejor no empezar. Si no tienes el momento ideal, el plan impecable o la versión sin fallos, lo dejas pendiente. Mientras tanto, sigues funcionando a toda velocidad en todo lo demás… menos en lo que realmente quieres.</p>
+        </div>
+        <div class="sint-block">
+          <h3>Te sientes culpable cuando descansas.</h3>
+          <p>Como si parar fuera un lujo que no mereces. Y paradójicamente, también te sientes culpable cuando no paras.</p>
+        </div>
+        <div class="preguntas">
+          <p>¿Qué cosas podrías haber vivido ya si no necesitaras hacerlo todo perfecto?</p>
+          <p>¿En qué momento confundimos excelencia con autoexigencia constante?</p>
+          <p>¿Quién serías si dejaras de medir tu valor por lo bien que haces todo?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCIA -->
+<section class="experiencia reveal">
+  <div class="narrow">
+    <span class="tag">La experiencia</span>
+    <p class="exp-intro">Un espacio para salir del ciclo de "nunca es suficiente".</p>
+    <p>Un taller experiencial de 4 horas para mujeres que están cansadas de vivir atrapadas entre la autoexigencia, el perfeccionismo y la procrastinación constante.</p>
+    <p>Durante estas cuatro horas, combinarás arteterapia y neuropsicología para identificar los patrones inconscientes que te mantienen en ese ciclo. Explorarás cómo estos patrones operan en tu cuerpo, tu sistema nervioso, tus emociones y tus decisiones.</p>
+    <div class="highlight">Este no es un espacio de motivación ni de frases bonitas. Es un espacio de conciencia, exploración profunda y responsabilidad personal.</div>
+    <p>Porque entender racionalmente lo que te pasa no es suficiente. Necesitas ver con claridad qué dinámicas sostienes y cómo puedes empezar a relacionarte de forma diferente con la acción, el error y el descanso.</p>
+  </div>
+</section>
+
+<!-- QUÉ RECIBIRÁS -->
+<section class="recibiras reveal" style="background:white;">
+  <div class="narrow">
+    <span class="tag">Lo que incluye</span>
+    <h2 class="section-title">¿Qué recibirás?</h2>
+    <ul class="items-list">
+      <li>Un kit de trabajo personalizado con los materiales que utilizaremos durante la experiencia.</li>
+      <li>Todos los recursos para la sesión de arteterapia: lienzo, pinturas y materiales de exploración creativa.</li>
+      <li>Una experiencia guiada de arteterapia para explorar bloqueos, emociones y narrativas internas desde un lugar no racional.</li>
+      <li>Un espacio íntimo de reflexión y conversación acompañado profesionalmente.</li>
+      <li>Un coffee break pensado como una pausa consciente para compartir, conectar y sostener el proceso vivido durante el taller.</li>
+      <li>Herramientas prácticas y concretas para relacionarte de forma más amable y efectiva con la acción, el descanso y la autoexigencia.</li>
+      <li>Reflexiones y ejercicios de integración para ayudarte a pasar de la culpa y la parálisis a una acción más presente y sostenible.</li>
+      <li><strong>Tu propio cuadro creado durante la sesión de arteterapia:</strong> una pieza personal y simbólica que visibiliza lo que emergió en ti y que podrás llevarte a casa como recordatorio tangible de tu proceso.</li>
+    </ul>
+    <img src="https://urdanetamariale-neurowellness.github.io/taller-presencial/recibiras.png" alt="Recuento visual de la experiencia" class="banner-img" loading="lazy"/>
+  </div>
+</section>
+
+<!-- QUÉ LOGRARÁS -->
+<section class="lograras reveal" style="background:var(--marfil);">
+  <div class="container">
+    <span class="tag">Tu transformación</span>
+    <h2 class="section-title">¿Qué lograrás?</h2>
+    <div class="two-col" style="align-items:start;">
+      <div class="col-img">
+        <img src="https://urdanetamariale-neurowellness.github.io/taller-presencial/lograras.png" alt="Lo que lograrás" loading="lazy"/>
+      </div>
+      <ul class="items-list" style="margin-top:0;">
+        <li>Mayor claridad sobre tus patrones inconscientes de perfeccionismo, autoexigencia y procrastinación.</li>
+        <li>Comprender por qué muchas veces "saber qué hacer" no es suficiente para actuar.</li>
+        <li>Identificar las señales corporales, emocionales y mentales que acompañan tu hiperexigencia.</li>
+        <li>Entender cómo funciona tu sistema nervioso bajo presión y cómo eso impacta tu forma de decidir, actuar y descansar.</li>
+        <li>Empezar a relacionarte contigo misma desde un lugar más consciente, regulado y menos castigador.</li>
+        <li>Recuperar conexión con lo que realmente necesitas, más allá de la productividad constante.</li>
+        <li>La sensación de haber vivido un espacio seguro y humano junto a otras mujeres que también están transitando procesos similares.</li>
+        <li>Una práctica concreta y sostenible para empezar a moverte hacia lo que quieres sin necesitar sentirte perfecta primero.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BONUS -->
+<section class="bonus reveal">
+  <div class="narrow">
+    <span class="tag">Bonus incluido</span>
+    <h2 class="section-title">La experiencia no termina tras la sesión presencial.</h2>
+    <div class="bonus-grid">
+      <div class="bonus-card">
+        <h4>Guía práctica de 21 días</h4>
+        <p>"De la Exigencia a la Presencia" — PDF con ejercicios diarios breves para seguir identificando y transformando tus patrones de perfeccionismo.</p>
+      </div>
+      <div class="bonus-card">
+        <h4>Encuentro online de seguimiento</h4>
+        <p>90 minutos grupales para revisar avances, resolver dudas y reforzar tu palanca personal de cambio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUNDAMENTOS -->
+<section class="fundamentos reveal">
+  <div class="container">
+    <span class="tag">Cómo trabajamos</span>
+    <h2 class="section-title">Cinco fundamentos del taller</h2>
+
+    <div class="fund-item">
+      <img src="https://urdanetamariale-neurowellness.github.io/taller-presencial/sistemanervioso.png" alt="Sistema nervioso" class="fund-img" loading="lazy"/>
+      <div class="fund-content">
+        <div class="fund-num">Fundamento 01</div>
+        <h3>El sistema nervioso</h3>
+        <p>La autoexigencia crónica no es simplemente "tu forma de ser". Muchas veces es un sistema nervioso que aprendió a asociar tu valor personal con producir, controlar y no equivocarse.</p>
+        <p>Cuando vivimos demasiado tiempo en alerta, el cuerpo entra en tensión constante y actuar deja de sentirse seguro. Ahí aparecen la procrastinación, la parálisis y el agotamiento incluso sin detenerte.</p>
+        <p>Aprenderás a reconocer en qué estado se encuentra tu sistema nervioso y cómo eso impacta tu manera de decidir, exigirte y pasar a la acción.</p>
+        <span class="fund-quote">Muchas veces lo que llamamos "perfeccionismo" es miedo disfrazado de alta exigencia.</span>
+      </div>
+    </div>
+
+    <div class="fund-item rev">
+      <img src="https://urdanetamariale-neurowellness.github.io/taller-presencial/arteterapia.png" alt="Arteterapia" class="fund-img" loading="lazy"/>
+      <div class="fund-content">
+        <div class="fund-num">Fundamento 02</div>
+        <h3>Arteterapia: acceder a lo que la mente no nombra</h3>
+        <p>Trabajaremos con pintura y lienzo de forma experiencial. No se trata de crear algo bonito ni de tener talento artístico. Se trata de usar el color, el gesto y el material para expresar y visibilizar patrones inconscientes que normalmente intentamos controlar, justificar o racionalizar.</p>
+        <p>A veces el cuerpo muestra lo que la mente todavía no puede explicar. No necesitas experiencia previa. Solo disposición para observar lo que aparece.</p>
+        <span class="fund-quote">El cuerpo sabe lo que la mente perfeccionista lleva tiempo callando.</span>
+      </div>
+    </div>
+
+    <div class="fund-item">
+      <img src="https://urdanetamariale-neurowellness.github.io/taller-presencial/conexion.png" alt="Taller neuropsicológico" class="fund-img" loading="lazy"/>
+      <div class="fund-content">
+        <div class="fund-num">Fundamento 03</div>
+        <h3>El taller neuropsicológico: comprender lo que descubriste</h3>
+        <p>Una vez que esos patrones emerjan a través de la experiencia artística, pasaremos a entenderlos. Exploraremos qué sostiene tu autoexigencia, cómo se activa en tu sistema nervioso y cómo impacta tu forma de actuar, descansar y relacionarte contigo misma.</p>
+        <p>No trabajaremos desde la culpa ni desde la idea de "arreglarte". Trabajaremos desde la conciencia, la regulación y la responsabilidad personal.</p>
+        <span class="fund-quote">La presencia no se consigue ignorando la exigencia. Se consigue entendiéndola.</span>
+      </div>
+    </div>
+
+    <div class="fund-item rev">
+      <img src="https://urdanetamariale-neurowellness.github.io/taller-presencial/accion.png" alt="Moverte desde la presencia" class="fund-img" loading="lazy"/>
+      <div class="fund-content">
+        <div class="fund-num">Fundamento 04</div>
+        <h3>Moverte desde la presencia</h3>
+        <p>No te irás con una lista interminable de tareas imposibles de sostener. Te llevarás una práctica concreta, realista y alineada con tu patrón personal: una pequeña acción diseñada para ayudarte a salir del ciclo de autoexigencia y parálisis desde un lugar más presente y sostenible.</p>
+        <p>Porque no necesitas exigirte más. Necesitas aprender a moverte incluso cuando no te sientes perfecta.</p>
+        <span class="fund-quote">No necesitas más disciplina. Necesitas un sistema nervioso que te deje moverte.</span>
+      </div>
+    </div>
+
+    <div class="fund-item">
+      <img src="https://urdanetamariale-neurowellness.github.io/taller-presencial/tribu.png" alt="La tribu" class="fund-img" loading="lazy"/>
+      <div class="fund-content">
+        <div class="fund-num">Fundamento 05</div>
+        <h3>La tribu</h3>
+        <p>Este no será un espacio masivo ni impersonal. Trabajaremos en un grupo pequeño de mujeres, acompañado y sostenido por una profesional, para que puedas explorar lo que aparezca desde un lugar de seguridad, presencia y respeto.</p>
+        <p>Habrá momentos de reflexión y socialización consciente donde podrás poner en palabras lo vivido, escuchar otras experiencias y reconocer que muchas de las luchas que cargas en silencio no son únicamente tuyas.</p>
+        <span class="fund-quote">No estás sola en esto.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUIÉN -->
+<section class="para-quien reveal">
+  <div class="container">
+    <span class="tag">¿Es para ti?</span>
+    <h2 class="section-title">¿Este espacio es para ti?</h2>
+    <div class="pq-grid">
+      <div class="pq-card">
+        <h3>Es para ti si…</h3>
+        <ul class="pq-list">
+          <li>Vives con la sensación de que nunca es suficiente, aunque te esfuerces más que nadie.</li>
+          <li>El perfeccionismo te paraliza antes de empezar o te impide terminar.</li>
+          <li>Te cuesta descansar, decir que no o priorizarte sin sentir culpa.</li>
+          <li>Has perdido el contacto con lo que realmente quieres y sientes.</li>
+          <li>Quieres entender qué está pasando dentro, no recibir más técnicas de productividad.</li>
+          <li>Estás dispuesta a integrar en los días siguientes lo que trabajemos.</li>
+        </ul>
+      </div>
+      <div class="pq-card">
+        <h3>Probablemente no sea para ti si…</h3>
+        <ul class="pq-list">
+          <li>Buscas motivación momentánea o soluciones rápidas.</li>
+          <li>Esperas salir con una fórmula perfecta para "hacer más" o rendir más.</li>
+          <li>Prefieres mantenerte ocupada antes que detenerte a mirar lo que sostiene tu autoexigencia.</li>
+          <li>No tienes disposición para cuestionar algunos patrones que hoy forman parte de tu manera de vivir.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITADORA -->
+<section class="facilitadora reveal">
+  <div class="container">
+    <div class="two-col">
+      <div class="col-img">
+        <img src="https://urdanetamariale-neurowellness.github.io/taller-presencial/mariale.png" alt="Mariale Urdaneta" loading="lazy"/>
+      </div>
+      <div>
+        <span class="tag">¿Quién facilitará este encuentro?</span>
+        <h2 class="fac-name">Mariale Urdaneta</h2>
+        <p class="fac-role">Neuropsicoeducadora · Fundadora de NeuroWellness Learning</p>
+        <p class="fac-bio">Acompaño a mujeres profesionales que por fuera parecen fuertes y capaces, pero que por dentro se sienten agotadas, exigentes consigo mismas y atrapadas en el ideal de "hacerlo todo perfecto".</p>
+        <p class="fac-bio">Lo que diferencia mi enfoque es el punto de partida: el sistema nervioso primero. He aprendido —tanto en mi propia experiencia como acompañando a cientos de mujeres— que ningún cambio profundo es posible mientras el sistema nervioso permanece en alerta constante.</p>
+        <p class="fac-bio">Este taller es una versión concentrada y altamente experiencial de ese trabajo: un espacio donde combinamos neuropsicología, arteterapia y coaching ontológico para que puedas empezar a moverte de forma diferente.</p>
+        <div class="tags">
+          <span class="etiqueta">Neuropsicología</span>
+          <span class="etiqueta">TCC</span>
+          <span class="etiqueta">Coaching Ontológico</span>
+          <span class="etiqueta">Psicología Positiva</span>
+          <span class="etiqueta">Arteterapia</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRÓXIMA EDICIÓN -->
+<section class="proxima reveal" id="reservar">
+  <div class="container">
+    <span class="tag">Próxima edición</span>
+    <h2 class="section-title">"Perfectamente <span>Imperfecta"</span></h2>
+    <div class="edicion-grid">
+      <div class="detalle"><span class="det-label">Fecha</span><span class="det-val">Sábado 1 de agosto 2026</span></div>
+      <div class="detalle"><span class="det-label">Horario</span><span class="det-val">10:00 am — 2:00 pm</span></div>
+      <div class="detalle"><span class="det-label">Lugar</span><span class="det-val">Orlando, FL<br><small style="font-size:.75rem;opacity:.6;">Lugar exacto se envía tras la inscripción</small></span></div>
+      <div class="detalle"><span class="det-label">Grupo</span><span class="det-val">Reducido · 10 personas</span></div>
+    </div>
+    <div class="precio-wrap">
+      <span class="precio-new">90 USD</span>
+      <span class="precio-nota">✦ Precio especial de lanzamiento: 75 USD · Primeras 5 plazas</span>
+    </div>
+    <p class="plazas-txt">Las plazas se asignan por orden de inscripción.<br>Una vez completado el grupo, se cerrará la convocatoria.</p>
+  </div>
+</section>
+
+<!-- FORMULARIO -->
+<section class="form-section reveal">
+  <div class="narrow">
+    <span class="tag" style="display:block;text-align:center;">Inscripción</span>
+    <h2 class="section-title" style="text-align:center;">Reservar mi plaza</h2>
+    <p class="form-intro">No necesitas tenerlo todo claro. Solo necesitas darte la oportunidad.</p>
+    <div class="form-wrap">
+      <div id="form-ok" class="form-ok">
+        <h3>¡Plaza reservada! 🌿</h3>
+        <p>Gracias por dar este paso. Te escribiré en breve para confirmarte todos los detalles.</p>
+      </div>
+      <form id="mi-form">
+        <div class="form-grid">
+          <div class="fg"><label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" required placeholder="Tu nombre"></div>
+          <div class="fg"><label for="apellido">Apellido</label><input type="text" id="apellido" name="apellido" required placeholder="Tu apellido"></div>
+          <div class="fg"><label for="email">Email</label><input type="email" id="email" name="email" required placeholder="tu@email.com"></div>
+          <div class="fg"><label for="telefono">Teléfono</label><input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000"></div>
+          <div class="fg full">
+            <label for="pais">País</label>
+            <select id="pais" name="pais">
+              <option value="">Selecciona tu país</option>
+              <option value="ES">🇪🇸 España (+34)</option>
+              <option value="VE">🇻🇪 Venezuela (+58)</option>
+              <option value="MX">🇲🇽 México (+52)</option>
+              <option value="AR">🇦🇷 Argentina (+54)</option>
+              <option value="CO">🇨🇴 Colombia (+57)</option>
+              <option value="PE">🇵🇪 Perú (+51)</option>
+              <option value="CL">🇨🇱 Chile (+56)</option>
+              <option value="EC">🇪🇨 Ecuador (+593)</option>
+              <option value="US">🇺🇸 EEUU/CA (+1)</option>
+              <option value="GB">🇬🇧 Reino Unido (+44)</option>
+              <option value="FR">🇫🇷 Francia (+33)</option>
+              <option value="DE">🇩🇪 Alemania (+49)</option>
+            </select>
+          </div>
+          <div class="fg full"><label for="mensaje">¿Qué te trajo hasta aquí? (opcional)</label><textarea id="mensaje" name="mensaje" placeholder="Cuéntame brevemente..."></textarea></div>
+        </div>
+        <button type="submit" class="btn-submit" id="btn-ok">Reservar mi plaza</button>
+        <p class="form-legal">Al enviar este formulario aceptas que me ponga en contacto contigo para confirmar tu inscripción. Tu información se trata con confidencialidad.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq reveal">
+  <div class="narrow">
+    <span class="tag">Preguntas frecuentes</span>
+    <h2 class="section-title">Lo que suelen preguntar</h2>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">¿Necesito experiencia previa en arteterapia o psicología?<span class="faq-ico">+</span></button>
+      <div class="faq-ans"><p>No. No se requiere ningún conocimiento previo ni habilidad artística. La arteterapia aquí es una herramienta de acceso al inconsciente, no de expresión creativa.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">¿Qué pasa si soy muy perfeccionista y me cuesta hacer cosas sin hacerlas bien?<span class="faq-ico">+</span></button>
+      <div class="faq-ans"><p>Precisamente para eso está diseñado este espacio. El perfeccionismo como patrón central es el eje de todo el taller. No hay nada que se evalúe ni se compare.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">¿Cuántas personas habrá?<span class="faq-ico">+</span></button>
+      <div class="faq-ans"><p>El grupo es reducido a 10 personas. Es una decisión intencional para mantener un espacio donde sea posible trabajar con profundidad real.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">¿Qué incluye la entrada?<span class="faq-ico">+</span></button>
+      <div class="faq-ans"><p>Las 4 horas de experiencia presencial, todos los materiales del taller, tu cuadro de arteterapia, la guía de 21 días en PDF y el encuentro online grupal de seguimiento de 90 minutos.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">¿Puedo cancelar mi plaza?<span class="faq-ico">+</span></button>
+      <div class="faq-ans"><p>Si tienes dudas sobre tu disponibilidad, escríbeme antes de inscribirte. Prefiero hablarlo contigo antes de que reserves.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto reveal">
+  <div class="narrow">
+    <span class="tag">¿Tienes alguna pregunta adicional?</span>
+    <h2 class="section-title">Escríbeme</h2>
+    <p>Estaré encantada de aclararte cualquier inquietud.<br>También puedes seguirme por Instagram.</p>
+    <div class="c-btns">
+      <a href="https://wa.me/34603777334" class="c-btn p" target="_blank">WhatsApp</a>
+      <a href="https://instagram.com/neuromariale" class="c-btn s" target="_blank">@neuromariale</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-brand">NeuroWellness Learning · Mariale Urdaneta</p>
+  <p><a href="#">Aviso legal</a> · <a href="#">Política de privacidad</a></p>
+  <p style="margin-top:.4rem">© 2026 María Alejandra Urdaneta. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+// ── FAQ
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const open = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!open) item.classList.add('open');
+}
+
+// ── FORMULARIO → GOOGLE APPS SCRIPT
+// Pega aquí la URL que te genera Apps Script al implementar como aplicación web
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzTEtSdrXkirN2b3FzoBSJAF9bMjvJ5GBQ88QbE4v3FstHdlL1r5Qh5NDIgTsvTtdHW3Q/exec';
+
+document.getElementById('mi-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('btn-ok');
+  btn.disabled = true;
+  btn.textContent = 'Enviando…';
+
+  const payload = {
+    nombre:   this.nombre.value,
+    apellido: this.apellido.value,
+    email:    this.email.value,
+    telefono: this.telefono.value,
+    pais:     this.pais.value,
+    mensaje:  this.mensaje.value
+  };
+
+  try {
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    this.style.display = 'none';
+    document.getElementById('form-ok').style.display = 'block';
+  } catch(err) {
+    btn.disabled = false;
+    btn.textContent = 'Reservar mi plaza';
+    alert('Hubo un problema. Por favor escríbeme directamente por WhatsApp.');
+  }
+});
+
+// ── ANIMACIÓN SCROLL
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      obs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
